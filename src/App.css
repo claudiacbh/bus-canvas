@@ -78,15 +78,15 @@
 
 @media (min-width: 768px) {
   .canvas-wrapper {
-    width: 70vw;
-    height: 70vw;
+    width: 40vw;
+    height: 40vw;
   }
 }
 
 @media (min-width: 1024px) {
   .canvas-wrapper {
-    width: 50vw;
-    height: 50vw;
+    width: 40vw;
+    height: 40vw;
   }
 }
 

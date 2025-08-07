@@ -41,10 +41,8 @@ const App = () => {
   };
 
   const handleCanvasClick = (e) => {
-    if (e.target === canvasRef.current || e.target.classList.contains('canvas-background-circle')) {
       setSelectedId(null);
       setEditingId(null);
-    }
   };
 
   const handleMouseDown = (e, id, actionType, handleName = null) => {
@@ -127,11 +125,33 @@ const App = () => {
   useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
+
+    const handleKeyDown = (e) => {
+      if (selectedId) {
+        if (e.key === 'Delete' || e.key === 'Supr') {
+          setItems(prev => {
+            const newItems = { ...prev };
+            delete newItems[selectedId];
+            return newItems;
+          });
+          setSelectedId(null);
+          setEditingId(null);
+        }
+      }
+      if (e.key === 'Escape') {
+        setSelectedId(null);
+        setEditingId(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleMouseMove, handleMouseUp]);
+  }, [handleMouseMove, handleMouseUp, selectedId]);
 
   return (
     <div className="app-container">
