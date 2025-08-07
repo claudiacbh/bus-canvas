@@ -1,6 +1,6 @@
 export const ITEM_TYPES = {
     BUS: 'Bus',
-    BUS_STOP: 'Bus Stop',
+    BUS_STOP: 'Stop',
     TEXT: 'Text',
 };
 

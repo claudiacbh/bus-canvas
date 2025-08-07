@@ -161,7 +161,7 @@ const App = () => {
           onClick={() => addItem(ITEM_TYPES.BUS_STOP)}
           className="control-button btn-bus-stop"
         >
-          Add Bus Stop
+          Add Stop
         </button>
         <button
           onClick={() => addItem(ITEM_TYPES.BUS)}
