@@ -19,6 +19,7 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  z-index: 1000;
 }
 
 .control-button {
@@ -69,6 +70,17 @@
   /* gray-600 */
 }
 
+.btn-background {
+  background-color: #1dbf5b;
+  /* gray-500 */
+  color: white;
+}
+
+.btn-background:hover {
+  background-color: #48a56a;
+  /* gray-600 */
+}
+
 .canvas-wrapper {
   width: 90vw;
   height: 90vw;
@@ -98,4 +110,15 @@
   background-color: white;
   border-radius: 9999px;
   border: 4px solid #475569;
+}
+
+.canvas-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(background.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
 }

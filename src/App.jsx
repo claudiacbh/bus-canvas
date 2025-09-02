@@ -11,6 +11,7 @@ const App = () => {
   const [activeAction, setActiveAction] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const canvasRef = useRef(null);
+  const [backgroundStatus, setBackgroundStatus] = useState(true);
 
   const addItem = (type) => {
     const canvasBounds = canvasRef.current.getBoundingClientRect();
@@ -153,6 +154,10 @@ const App = () => {
     };
   }, [handleMouseMove, handleMouseUp, selectedId]);
 
+  const toggleBackground = () => {
+    setBackgroundStatus(!backgroundStatus);
+  }
+
   return (
     <div className="app-container">
       <h1 className="app-header">Interactive Canvas</h1>
@@ -175,14 +180,28 @@ const App = () => {
         >
           Add Text
         </button>
+        <button
+          onClick={toggleBackground}
+          className="control-button btn-background"
+        >
+          Switch Background
+        </button>
       </div>
+
+      {(
+        backgroundStatus &&
+        <div className="canvas-background"></div>
+      )}
 
       <div
         ref={canvasRef}
         className="canvas-wrapper"
         onClick={handleCanvasClick}
       >
-        <div className="canvas-background-circle"></div>
+        {(
+          !backgroundStatus &&
+          <div className="canvas-background-circle"></div>
+        )}
         {Object.values(items).map(item => (
           <Box
             key={item.id}
